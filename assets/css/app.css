@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap");
+button,
+.button, h6, h5, h4, h3, h2, h1, span,
+li,
+a {
+  display: inline-block;
+}
+button::first-letter,
+.button::first-letter, h6::first-letter, h5::first-letter, h4::first-letter, h3::first-letter, h2::first-letter, h1::first-letter, span::first-letter,
+li::first-letter,
+a::first-letter {
+  text-transform: uppercase;
+}
+
+@layer basic, important;
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/fonts/Ubuntu.ttf");
+}
+@font-face {
+  font-family: "Ubuntu-i";
+  src: url("/fonts/Ubuntu-i.ttf");
+}
+@layer basic {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  p {
+    line-height: 2rem;
+  }
+  ul,
+  li {
+    list-style: none;
+  }
+}
+@layer basic {
+  :root {
+    --color-white: hsl(0, 0%, 100%);
+    --color-background: hsl(240, 100%, 1%);
+    --color-primary: hsl(285, 100%, 40%);
+    font-family: "Ubuntu Sans", "Ubuntu", sans-serif;
+    letter-spacing: 1px;
+    color: var(--color-white);
+    background-color: var(--color-background);
+  }
+  a {
+    transition: color 200ms ease-in-out;
+  }
+  a:hover {
+    color: var(--color-primary);
+  }
+  .h1 {
+    font-size: 64px;
+  }
+  button,
+  .button {
+    padding: 16px 64px;
+    border: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-weight: 600;
+    transition: background-color 100ms linear, color 300ms ease-in-out;
+  }
+  button.main-btn,
+  .button.main-btn {
+    background-color: greenyellow;
+  }
+  .app {
+    height: 100vh;
+    background: center/cover no-repeat url("/1.jpg");
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas: "header header header header second second" "main main main main second second" "main main main main second second" "main main main main second second" "main main main main second second" "main main main main second second";
+    height: inherit;
+    transition: backdrop-filter 600ms ease-out;
+  }
+  .wrapper.focus {
+    backdrop-filter: blur(8px) brightness(0.5);
+  }
+  .header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+    padding-left: 128px;
+    padding-right: 128px;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-container > img {
+    width: 64px;
+    height: 64px;
+  }
+  .header-nav > ul > li:not(:first-child) {
+    margin-left: 16px;
+  }
+  .main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 64px;
+    padding: 128px;
+  }
+  .main > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    gap: inherit;
+  }
+  .main > div:first-child > .h1 {
+    text-shadow: 4px 4px 8px var(--color-background);
+  }
+  .main > div:first-child > div:nth-child(2) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: start;
+  }
+  .main > div:last-child {
+    --color-background: hsla(0, 0%, 0%, 0.8);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 32px;
+    padding: 32px;
+    border-radius: 4px;
+    background-color: var(--color-background);
+  }
+  .main > div:last-child > div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .main > div:last-child > div:not(:last-child) {
+    border-right: 1px solid gray;
+  }
+  .main > div:last-child > div > p {
+    height: 96px;
+    overflow: hidden;
+  }
+  .second-sec {
+    grid-area: second;
+    background: center/cover no-repeat url("/3.png");
+    transition: filter 200ms ease-in;
+  }
+  .second-sec:hover {
+    filter: drop-shadow(4px 4px 10px var(--color-primary));
+  }
+  .therd-sec {
+    grid-area: therd;
+    background-color: rgba(0, 0, 0, 0.726);
+    background: right/cover no-repeat url("/3.png");
+  }
+}
+@layer important {
+  button:hover,
+  .button:hover {
+    color: var(--color-white);
+    background-color: var(--color-primary);
+  }
+}
+
+/*# sourceMappingURL=app.css.map */

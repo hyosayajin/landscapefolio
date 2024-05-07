@@ -1,0 +1,18 @@
+{
+  "name": "landscapefolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "sass": "sass ./assets/sass/style.scss ./assets/css/app.css --watch"
+  },
+  "devDependencies": {
+    "vite": "^5.2.0"
+  },
+  "dependencies": {
+    "sass": "^1.76.0"
+  }
+}

@@ -1,0 +1,285 @@
+// VARIABLE
+$px_16: 16px;
+$px_32: 32px;
+$px_64: 64px;
+
+// MIXIN RULES
+
+// EXTEND RULES
+
+%ucf {
+	display: inline-block;
+
+	&::first-letter {
+		text-transform: uppercase;
+	}
+}
+// LAYERS RULES
+@layer basic, important;
+
+// ELEMENTS IMPORTED
+
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap");
+
+@font-face {
+	font-family: "Ubuntu";
+	src: url("/fonts/Ubuntu.ttf");
+}
+
+@font-face {
+	font-family: "Ubuntu-i";
+	src: url("/fonts/Ubuntu-i.ttf");
+}
+
+// RESET RULES
+
+@layer basic {
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	a {
+		color: currentColor;
+		text-decoration: none;
+	}
+
+	img {
+		width: 100%;
+		height: auto;
+	}
+
+	p {
+		line-height: 2rem;
+	}
+
+	ul,
+	li {
+		list-style: none;
+	}
+
+	span,
+	li,
+	a {
+		@extend %ucf;
+	}
+
+	@for $i from 1 through 6 {
+		h#{$i} {
+			@extend %ucf;
+		}
+	}
+}
+
+// GENERAL RULES
+
+@layer basic {
+	:root {
+		// # CSS Variables
+		--color-white: hsl(0, 0%, 100%);
+		--color-background: hsl(240, 100%, 1%);
+		--color-primary: hsl(285, 100%, 40%);
+
+		font-family: "Ubuntu Sans", "Ubuntu", sans-serif;
+		letter-spacing: 1px;
+		// line-height: 3rem;
+
+		color: var(--color-white);
+
+		background-color: var(--color-background);
+	}
+
+	//  # GLOBAL RULES
+	a {
+		transition: color 200ms ease-in-out;
+
+		&:hover {
+			color: var(--color-primary);
+		}
+	}
+
+	// # COMPONENTS
+
+	.h1 {
+		font-size: $px_64;
+	}
+
+	button,
+	.button {
+		@extend %ucf;
+
+		padding: $px_16 $px_64;
+
+		border: none;
+		border-radius: 4px;
+
+		font-family: inherit;
+		font-weight: 600;
+
+		transition: background-color 100ms linear, color 300ms ease-in-out;
+
+		&.main-btn {
+			background-color: greenyellow;
+		}
+	}
+
+	.app {
+		height: 100vh;
+		background: center/cover no-repeat url("/1.jpg");
+	}
+
+	.wrapper {
+		display: grid;
+
+		grid-template-columns: repeat(6, 1fr);
+		grid-template-rows: repeat(6, 1fr);
+
+		grid-template-areas:
+			"header header header header second second"
+			"main main main main second second"
+			"main main main main second second"
+			"main main main main second second"
+			"main main main main second second"
+			"main main main main second second";
+
+		height: inherit;
+
+		// padding: $px_32;
+
+		transition: backdrop-filter 600ms ease-out;
+
+		&.focus {
+			backdrop-filter: blur(8px) brightness(0.5);
+		}
+	}
+
+	// # HEADER RULES
+
+	$headerPadding: 128px;
+
+	.header {
+		grid-area: header;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: $px_64;
+
+		padding-left: $headerPadding;
+		padding-right: $headerPadding;
+	}
+
+	.logo-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		> img {
+			width: $px_64;
+			height: $px_64;
+		}
+	}
+
+	.header-nav > ul > li:not(:first-child) {
+		margin-left: $px_16;
+	}
+
+	//  MAIN RULES
+
+	.main {
+		grid-area: main;
+
+		display: flex;
+		flex-direction: column;
+		// align-items: center;
+		justify-content: center;
+		gap: $px_64;
+
+		padding: $headerPadding;
+	}
+
+	.main > div:first-child {
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		justify-content: start;
+		gap: inherit;
+
+		> .h1 {
+			text-shadow: 4px 4px 8px var(--color-background);
+		}
+
+		> div:nth-child(2) {
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+
+			justify-items: start;
+		}
+	}
+
+	.main > div:last-child {
+		--color-background: hsla(0, 0%, 0%, 0.8);
+
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		column-gap: $px_32;
+
+		padding: $px_32;
+
+		border-radius: 4px;
+
+		background-color: var(--color-background);
+
+		> div {
+			display: flex;
+			flex-direction: column;
+			gap: $px_16;
+
+			&:not(:last-child) {
+				border-right: 1px solid gray;
+			}
+		}
+
+		> div > p {
+			height: calc($px_64 * 1.5);
+
+			overflow: hidden;
+			// text-emphasis: ;
+		}
+	}
+
+	// SECOND SECTION
+
+	.second-sec {
+		grid-area: second;
+
+		// background-color: rgba(71, 71, 71, 0.801);
+		background: center/cover no-repeat url("/3.png");
+
+		transition: filter 200ms ease-in;
+
+		&:hover {
+			filter: drop-shadow(4px 4px 10px var(--color-primary));
+		}
+	}
+
+	// THERD SECTION
+
+	.therd-sec {
+		grid-area: therd;
+		background-color: rgba(0, 0, 0, 0.726);
+		background: right/cover no-repeat url("/3.png");
+	}
+}
+
+@layer important {
+	button,
+	.button {
+		&:hover {
+			color: var(--color-white);
+			background-color: var(--color-primary);
+		}
+	}
+}
